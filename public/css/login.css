@@ -1,0 +1,52 @@
+
+body {
+  font-family: "Trispace", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.bg-pink {
+	background-color: #fff0f5 !important;
+}
+
+.border-pink {
+	border-color: #fff0f5 !important;
+}
+
+.hero-btn1 {
+	background-color: rgb(177 136 109) !important;
+	border: solid 2px rgb(177 136 109) !important;
+}
+
+.hero-btn1:hover {
+	border: solid 2px rgb(113 88 72) !important;
+	background-color: rgb(113 88 72) !important;
+}
+
+.hero-btn2 {
+	background-color: #fff0f5 !important;
+	border: solid 2px #fff0f5 !important;
+	color: black !important;
+}
+
+.hero-btn2:hover {
+	color: black !important;
+	background-color: rgb(214 198 204) !important;
+	border: solid 2px rgb(214 198 204) !important;
+}
+
+
+@media (min-width: 768px) {
+.gradient-form {
+height: 100vh !important;
+}
+}
+@media (min-width: 769px) {
+.gradient-custom-2 {
+border-top-right-radius: .3rem;
+border-bottom-right-radius: .3rem;
+}
+}

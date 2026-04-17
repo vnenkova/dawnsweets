@@ -1,0 +1,86 @@
+body {
+  font-family: "Trispace", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+
+  cursor: url("/dawnsweets/public/images/sweet_cursor.png"), auto;
+}
+
+
+.navbar {
+	background-color: #fff0f5 !important;
+}
+
+::-webkit-scrollbar {
+    width: 16px;         
+    height: 12px;         
+}
+
+::-webkit-scrollbar-track {
+    background: #dedede;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b1886d;
+    border-radius: 6px;
+    border: 3px solid #f0f0f0; 
+}
+
+footer {
+	color: white;
+}
+
+.hero-cake {
+	max-height: 400px;
+}
+
+.cake2 {
+	max-height: 400px;
+}
+
+.hero-btn1 {
+	background-color: rgb(177 136 109) !important;
+	border: solid 2px rgb(177 136 109) !important;
+}
+
+.hero-btn1:hover {
+	border: solid 2px rgb(113 88 72) !important;
+	background-color: rgb(113 88 72) !important;
+}
+
+.hero-btn2 {
+	background-color: #fff0f5 !important;
+	border: solid 2px #fff0f5 !important;
+	color: black !important;
+}
+
+.hero-btn2:hover {
+	color: black !important;
+	background-color: rgb(214 198 204) !important;
+	border: solid 2px rgb(214 198 204) !important;
+}
+
+.bg {
+	background-color: #bababa;
+}
+
+.bg-pink {
+	background-color: #fff0f5 !important;
+}
+
+.bg-brown {
+	background-color: rgb(177 136 109) !important
+}
+
+.cake-card {
+	position: relative;
+	transition: transform 0.2s ease, box-shadow 0.2s ease; /* <-- put it here */
+}
+
+.cake-card:hover {
+	transform: scale(1.05); /* slightly bigger */
+	box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* optional shadow for depth */
+}
