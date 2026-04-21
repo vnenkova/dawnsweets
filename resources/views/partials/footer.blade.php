@@ -10,8 +10,10 @@
 			<h5 class="fst-italic">Quick Links</h5> 
 			<ul class="nav flex-column"> 
 				<li class="nav-item mb-2 text-white"><a href="{{ route('home') }}" class="nav-link p-0 text-white">Home</a></li>
-				<li class="nav-item mb-2"><a href="{{ route('profile') }}" class="nav-link p-0 text-white">My Profile</a></li> 
-				<li class="nav-item mb-2 text-white"><a href="{{ route('cart.index') }}" class="nav-link p-0 text-white">Cart</a></li> 
+				@if($user->isAdmin !== 1) 
+					<li class="nav-item mb-2"><a href="{{ route('profile') }}" class="nav-link p-0 text-white">My Profile</a></li> 
+					<li class="nav-item mb-2 text-white"><a href="{{ route('cart.index') }}" class="nav-link p-0 text-white">Cart</a></li> 
+				@endif
 				<li class="nav-item mb-2 text-white"><a href="{{ route('orders.index') }}" class="nav-link p-0 text-white">Orders</a></li>
 				<!-- <li class="nav-item mb-2 text-white"><a href="#" class="nav-link p-0 text-white">About</a></li>  -->
 			</ul> 

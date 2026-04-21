@@ -5,10 +5,13 @@
 @section('content')
 	<div class="container">
 		<div class="row pt-5">
-			<h1 class="h3 mb-5 text-center text-md-start">My Profile</h1>
+			<div class="d-flex align-items-center mb-5 bg-secondary-subtle p-4 rounded-5 justify-content-center">
+        <i class="bi bi-person-circle fs-5 me-2"></i>
+        <h1 class="h3 text-center mb-0">My Profile</h1>
+      </div>
 			<div class="col-md-4 text-center text-md-start">
 				<div class="text-center pb-5" width="400" height="400">
-          <img src="https://placehold.co/200x200" alt="profile pic" class="img-fluid rounded" height="200" width="200">    
+          <img src="{{ asset('images/placeholder.jpg') }}" alt="profile pic" class="img-fluid rounded-circle" height="200" width="200">    
         </div>
 				<div class="input-group mb-3 mt-4">
   					<input type="file" class="form-control" id="inputGroupFile01">

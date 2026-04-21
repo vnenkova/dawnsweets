@@ -6,18 +6,29 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        
         <li class="nav-item">
-          <a class="nav-link {{ Route::currentRouteName() === 'home' ? 'active' : '' }}" aria-current="page" href="{{ route('home') }}">Home</a>
+          <a class="nav-link {{ Route::currentRouteName() === 'home' ? 'active' : '' }}" aria-current="page" href="{{ route('home') }}">@if($user->isAdmin === 1) Cakes @else Home @endif</a>
         </li>
+        @if($user->isAdmin !== 1)
         <li class="nav-item">
           <a class="nav-link {{ Route::currentRouteName() === 'profile' ? 'active' : '' }}" href="{{ route('profile') }}" aria-current="page">My Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ Route::currentRouteName() === 'cart.index' ? 'active' : '' }}" href="{{ route('cart.index') }}" aria-current="page">Cart</a>
         </li>
+        @endif
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#" aria-current="page">Cakes</a>
+        </li> -->
+       <!--  <li class="nav-item">
+          <a class="nav-link" href="#" aria-current="page">Users</a>
+        </li> -->
+        @if($user->isAdmin === 1 || $user->isAdmin !== 1)
         <li class="nav-item">
           <a class="nav-link {{ Route::currentRouteName() === 'orders.index' ? 'active' : '' }}" href="{{ route('orders.index') }}" aria-current="page">Orders</a>
         </li>
+        @endif
       </ul>
       <ul class="navbar-nav ms-lg-auto">
         <li class="nav-item">

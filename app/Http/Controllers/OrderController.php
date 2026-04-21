@@ -13,9 +13,14 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::where('user_id', Auth::user()->id)->paginate(10);
+        $user = Auth::user();
 
-        return view('pages.orders-index', compact('orders'));
+        if ($user->isAdmin === 1) {
+            $orders = Order::paginate(10);
+        } else {
+            $orders = Order::where('user_id', Auth::user()->id)->paginate(10);
+        }
+        return view('pages.orders-index', compact('orders', 'user'));
     }
 
     public function store()
@@ -54,5 +59,44 @@ class OrderController extends Controller
         CartProduct::where('user_id', $user->id)->delete();
 
         return redirect()->back()->with('success', 'Order placed successfully!');
+    }
+
+    public function complete(string $id) {
+        $order = Order::where('id', $id)->first();
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'No such order found.');
+        }
+
+        $order->update([
+            'status' => 'completed'
+        ]);
+
+        return redirect()->back()->with('success', 'Order was successfully marked as completed.');
+    }
+
+    public function cancel(string $id) {
+        $order = Order::where('id', $id)->first();
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'No such order found.');
+        }
+
+        $order->update([
+            'status' => 'canceled'
+        ]);
+
+        return redirect()->back()->with('success', 'Order was successfully canceled.');
+    }
+
+    public function destroy(string $id) {
+        $order = Order::where('id', $id)->first();
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'No such order found.');
+        }
+
+        $order->delete();
+        return redirect()->back()->with('success', 'Order was successfully deleted.');
     }
 }

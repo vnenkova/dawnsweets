@@ -5,7 +5,10 @@
 @section('content')
 	<div class="container">
 		<div class="row my-5">
-			<h1 class="h3 mb-5 text-center text-md-start">My Cart</h1>
+			<div class="d-flex align-items-center mb-5 bg-secondary-subtle p-4 rounded-5 justify-content-center">
+        <i class="bi bi-cart4 fs-5 me-2"></i>
+        <h1 class="h3 text-center mb-0">My Cart</h1>
+      </div>
 			@if(session('success'))
               <div class="alert alert-success fade show" role="alert">
                 {{ session('success') }}

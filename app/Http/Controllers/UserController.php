@@ -67,8 +67,9 @@ class UserController extends Controller
     }
 
     public function home() {
+        $user = Auth::user();
         $cakes = Cake::all();
-        return view('pages.home', compact('cakes'));
+        return view('pages.home', compact('cakes', 'user'));
     }
 
     public function profile() {
