@@ -55,35 +55,39 @@
 									</td>
 									<td>{{ $order->total_price }} €</td>
 									<td><span class="text-decoration-underline">{{ $order->created_at }}</span></td>
-									<td>{{ $order->user->username }} <br> <small class="text-muted">({{ $order->user->email }})</small></td>
+									@if($user->isAdmin === 1)
+										<td>{{ $order->user->username }} <br> <small class="text-muted">({{ $order->user->email }})</small></td>
+									@endif
 									<td class="@if($order->status == 'pending') table-info @elseif($order->status == 'completed') table-success @elseif($order->status == 'canceled') table-danger @endif">{{ $order->status }} @if($order->status == 'pending')<i class="bi bi-hourglass-split"></i> @elseif($order->status == 'completed') <i class="bi bi-check-circle-fill"></i> @elseif($order->status == 'canceled') <i class="bi bi-x-circle-fill"></i> @endif</td>
-									<td>
-										<div class="d-flex gap-2">
-											<!-- <a href="{{ route('orders.complete', ['id' => $order->id]) }}" class="btn btn-success" data-bs-toggle="tooltip" data-bs-title="Mark as completed" data-bs-placement="top">
-											<i class="bi bi-check-lg"></i>
-											</a> -->
-											<form action="{{ route('orders.complete', ['id' => $order->id]) }}" method="POST" onsubmit="document.querySelector('.btn-complete').disabled=true">
-												@csrf
-												@method('PUT')
-												<button type="submit" class="btn btn-success btn-complete" data-bs-toggle="tooltip" data-bs-title="Mark as completed" data-bs-placement="top" @if($order->status == 'completed' || $order->status == 'canceled') disabled  @endif><i class="bi bi-check-lg"></i></button>
-											</form>
-											<form action="{{ route('orders.cancel', ['id' => $order->id]) }}" method="POST" onsubmit="document.querySelector('.btn-cancel').disabled=true; return confirm('Are you sure you want to cancel this order?')">
-												@csrf
-												@method('PUT')
-												<button type="submit" class="btn btn-danger btn-cancel" data-bs-toggle="tooltip" data-bs-title="Cancel" data-bs-placement="top" @if($order->status == 'completed' || $order->status == 'canceled') disabled  @endif><i class="bi bi-x-lg"></i></button>
-											</form>
-											<!-- <a href="" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-title="Cancel" data-bs-placement="top">
-												<i class="bi bi-x-lg"></i>
-											</a> -->
-											<form action="{{ route('orders.delete', ['id' => $order->id]) }}" method="POST" onsubmit="document.querySelector('.btn-delete').disabled=true; return confirm('Are you sure you want to delete this order?')">
-			                                  @csrf
-			                                  @method('DELETE')
-			                                 <button type="submit" class="btn btn-dark btn-delete" data-bs-toggle="tooltip" data-bs-title="Delete" data-bs-placement="top">
-			                                  <i class="bi bi-trash"></i>
-			                                 </button>
-			                                </form>
-										</div>
-									</td>
+									@if($user->isAdmin === 1)
+										<td>
+											<div class="d-flex gap-2">
+												<!-- <a href="{{ route('orders.complete', ['id' => $order->id]) }}" class="btn btn-success" data-bs-toggle="tooltip" data-bs-title="Mark as completed" data-bs-placement="top">
+												<i class="bi bi-check-lg"></i>
+												</a> -->
+												<form action="{{ route('orders.complete', ['id' => $order->id]) }}" method="POST" onsubmit="document.querySelector('.btn-complete').disabled=true">
+													@csrf
+													@method('PUT')
+													<button type="submit" class="btn btn-success btn-complete" data-bs-toggle="tooltip" data-bs-title="Mark as completed" data-bs-placement="top" @if($order->status == 'completed' || $order->status == 'canceled') disabled  @endif><i class="bi bi-check-lg"></i></button>
+												</form>
+												<form action="{{ route('orders.cancel', ['id' => $order->id]) }}" method="POST" onsubmit="document.querySelector('.btn-cancel').disabled=true; return confirm('Are you sure you want to cancel this order?')">
+													@csrf
+													@method('PUT')
+													<button type="submit" class="btn btn-danger btn-cancel" data-bs-toggle="tooltip" data-bs-title="Cancel" data-bs-placement="top" @if($order->status == 'completed' || $order->status == 'canceled') disabled  @endif><i class="bi bi-x-lg"></i></button>
+												</form>
+												<!-- <a href="" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-title="Cancel" data-bs-placement="top">
+													<i class="bi bi-x-lg"></i>
+												</a> -->
+												<form action="{{ route('orders.delete', ['id' => $order->id]) }}" method="POST" onsubmit="document.querySelector('.btn-delete').disabled=true; return confirm('Are you sure you want to delete this order?')">
+				                                  @csrf
+				                                  @method('DELETE')
+				                                 <button type="submit" class="btn btn-dark btn-delete" data-bs-toggle="tooltip" data-bs-title="Delete" data-bs-placement="top">
+				                                  <i class="bi bi-trash"></i>
+				                                 </button>
+				                                </form>
+											</div>
+										</td>
+									@endif
 								</tr>
 							@endforeach
 						</tbody>

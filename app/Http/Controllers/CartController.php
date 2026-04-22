@@ -11,6 +11,8 @@ class CartController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+
         $cart_products = CartProduct::with('cake')->where('user_id', Auth::user()->id)->paginate(12);
 
         $total = 0;
@@ -19,7 +21,7 @@ class CartController extends Controller
             $total += $cart_product->cake->price * $cart_product->quantity;
         }
 
-        return view('pages.cart-index', compact('cart_products', 'total'));
+        return view('pages.cart-index', compact('cart_products', 'total', 'user'));
     }
 
     public function add(string $id)
