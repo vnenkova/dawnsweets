@@ -55,7 +55,7 @@
                         <div class="card-body">
                             <img src="{{ asset($cake->filepath) }}" alt="{{ $cake->name }}" class="img-fluid">
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer bg-pink">
                             <div class="fw-semibold fs-4">{{ $cake->name }}</div>
                             <div class="d-flex justify-content-between">
                                 <div class="fs-5">{{ $cake->grams }} g</div>
