@@ -36,6 +36,7 @@
 							<th><i class="bi bi-list-ol me-2"></i>Ordered products</th>
 							<th><i class="bi bi-tag me-2"></i>Total price</th>
 							<th><i class="bi bi-calendar-check me-2"></i>Ordered on</th>
+							<th><i class="bi bi-truck me-2"></i>Shipping Address</th>
 							@if($user->isAdmin === 1)
 								<th><i class="bi bi-calendar-check me-2"></i>Ordered by</th>
 							@endif
@@ -50,11 +51,16 @@
 									<td>{{ $order->id }}</td>
 									<td>
 										@foreach($order->orderItems as $oi)
-											<div><img src="{{ asset($oi->cake->filepath) }}" alt="{{ $oi->cake->name }}" class="img-fluid me-2" width="50" height="50">{{ $oi->cake->name }} {{ $oi->quantity }} x {{ $oi->price }} €</div>
+											<div><img src="{{ asset($oi->cake->filepath) }}" alt="{{ $oi->cake->name }}" class="img-fluid me-2" width="50" height="50"><br>{{ $oi->cake->name }} <br>{{ $oi->quantity }} x {{ $oi->price }} €</div>
 										@endforeach
 									</td>
 									<td>{{ $order->total_price }} €</td>
 									<td><span class="text-decoration-underline">{{ $order->created_at }}</span></td>
+									@if($user->isAdmin === 1)
+										<td>{{ $order->user->address }}</td>
+									@else
+										<td>{{ $user->address }}</td>
+									@endif
 									@if($user->isAdmin === 1)
 										<td>{{ $order->user->username }} <br> <small class="text-muted">({{ $order->user->email }})</small></td>
 									@endif
